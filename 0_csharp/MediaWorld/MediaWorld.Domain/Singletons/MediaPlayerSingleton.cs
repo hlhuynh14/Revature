@@ -1,6 +1,7 @@
 using System;
 using MediaWorld.Domain.Abstracts;
 using MediaWorld.Domain.Interfaces;
+using static MediaWorld.Domain.Delegates.ControlDelegate;
 
 namespace MediaWorld.Domain.Singletons
 {
@@ -21,9 +22,35 @@ namespace MediaWorld.Domain.Singletons
 
     private MediaPlayerSingleton() {}
 
-    public void Execute(string command, AMedia media)
+    public void Execute(ButtonDelegate button)
     {
-      Console.WriteLine(media);
+      button();
+      button();
+    }
+
+    public bool VolumeUp()
+    {
+      return true;
+    }
+
+    public bool VolumeDown()
+    {
+      return true;
+    }
+
+    public bool VolumeMute()
+    {
+      return true;
+    }
+
+    public bool PowerUp()
+    {
+      throw new NotImplementedException();
+    }
+
+    public bool PowerDown()
+    {
+      throw new NotImplementedException();
     }
   }
 }

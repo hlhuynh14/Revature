@@ -1,7 +1,9 @@
 ﻿using System;
 using MediaWorld.Domain.Abstracts;
+using MediaWorld.Domain.Factories;
 using MediaWorld.Domain.Models;
 using MediaWorld.Domain.Singletons;
+using MediaWorld.Storing.Repositories;
 
 namespace MediaWorld.Client
 {
@@ -10,6 +12,8 @@ namespace MediaWorld.Client
   /// </summary>
   internal class Program
   {
+    private static MediaRepository _repository = new MediaRepository();
+    
     /// <summary>
     /// starts the application
     /// </summary>
@@ -21,11 +25,11 @@ namespace MediaWorld.Client
     private static void Play()
     {
       var mediaPlayer = MediaPlayerSingleton.Instance;
-      AMedia song = new Song();
-      AMedia movie = new Movie();
 
-      mediaPlayer.Execute("play", song); 
-      mediaPlayer.Execute("play", movie);
+      foreach (var item in _repository.MediaLibrary)
+      {
+        mediaPlayer.Execute(item.Play);
+      }
     }
   }
 }
