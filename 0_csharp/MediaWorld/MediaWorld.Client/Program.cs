@@ -28,7 +28,7 @@ namespace MediaWorld.Client
 
       foreach (var item in _repository.MediaLibrary)
       {
-        mediaPlayer.Execute(item.Play);
+        mediaPlayer.Execute(item.Play, item);
       }
     }
   }

@@ -11,7 +11,7 @@ namespace MediaWorld.Domain.Abstracts
 
     public override bool Play()
     {
-      return false;
+      return true;
     }
 
     public override bool Rewind()
