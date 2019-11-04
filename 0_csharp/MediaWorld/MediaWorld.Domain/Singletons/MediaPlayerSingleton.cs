@@ -22,10 +22,10 @@ namespace MediaWorld.Domain.Singletons
 
     private MediaPlayerSingleton() {}
 
-    public void Execute(ButtonDelegate button, AMedia media)
+    public bool Execute(ButtonDelegate button, AMedia media)
     {
       media.ResultEvent += ResultHandler;
-      button();
+      return button();
     }
 
     public void ResultHandler(AMedia media)
