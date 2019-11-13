@@ -5,6 +5,9 @@ go
 create database PizzaBox;
 go
 
+use PizzaBox;
+go
+
 create schema [Order];
 go
 
@@ -28,7 +31,7 @@ create table [Order].[OrderPizza]
     OrderPizzaId int not null identity(1,2)
     ,OrderId int not null
     ,PizzaId int not null
-)
+);
 
 create table [Order].[Pizza]
 (
@@ -37,7 +40,7 @@ create table [Order].[Pizza]
     ,CrustId int not null --foreign
     ,Price decimal(2,2) not null
     ,Active bit not null
-)
+);
 
 -- alter
 alter table [Order].[Order]
