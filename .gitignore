@@ -1,6 +1,9 @@
 # dotnet
-**/bin/
-**/obj/
+bin/
+obj/
+
+# nodejs
+node_modules/
 
 # vagrant
 **/.vagrant/
