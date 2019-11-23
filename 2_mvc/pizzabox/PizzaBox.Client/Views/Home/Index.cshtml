@@ -15,7 +15,7 @@
     }
 </div>
 
-<form action="/home/order" method="post">
+<!-- <form action="/home/order" method="post">
   @foreach(var c in Model.Crusts)
   {
     <input type="radio" name="crust" value="@c" />
@@ -29,4 +29,32 @@
   }
 
   <input type="submit" value="order" />
-</form>
+</form> -->
+
+@using (Html.BeginForm("order", "home"))
+{
+  @Html.AntiForgeryToken()
+  foreach(var c in Model.Crusts)
+  {
+    @Html.RadioButtonFor(m => m.Crust, @c)
+    @Html.LabelFor(m => m.Crust, @c)
+  }
+  @Html.ValidationMessageFor(m => m.Crust)
+
+  foreach(var s in Model.Sizes)
+  {
+    @Html.RadioButtonFor(m => m.Size, s)
+    @Html.LabelFor(m => m.Size, s)
+  }
+  @Html.ValidationMessageFor(m => m.Size)
+  
+  @Html.LabelFor(m => m.Quantity)
+  @Html.TextBoxFor(m => m.Quantity)
+  @Html.ValidationMessageFor(m => m.Quantity)
+
+  @Html.LabelFor(m => m.Name)
+  @Html.TextBoxFor(m => m.Name)
+  @Html.ValidationMessageFor(m => m.Name)
+
+  <input type="submit" value="order"/>
+}

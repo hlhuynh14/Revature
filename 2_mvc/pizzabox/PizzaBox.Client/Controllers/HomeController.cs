@@ -32,8 +32,13 @@ namespace PizzaBox.Client.Controllers
     [HttpPost()]
     public IActionResult Order(Pizza p)
     {
-      ViewBag.Pizza = p;
-      return View("Index", new Pizza());
+      if (ModelState.IsValid)
+      {
+        ViewBag.Pizza = p;
+        return View("Index", new Pizza());
+      }
+
+      return View("Index", p);
     }
 
     public IActionResult Privacy()
