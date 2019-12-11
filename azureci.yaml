@@ -45,14 +45,14 @@ stages:
               dotnet test 3_devops/Devops.sln --logger trx
               dotnet sonarscanner end /d:sonar.login=$SONAR_TOKEN
             env:
-              SONAR_TOKEN: $(SONAR_TOKEN)
+              SONAR_TOKEN: $(sonar.token)
   - stage: pack
     jobs:
       - job:
         pool:
           vmImage: ubuntu-18.04
         steps:
-          - script: docker image build -f 3_devops/dockerfile -t hlhuynh14/devops:$BUILD_NAME ./3_devops/
+          - script: docker image build -f 3_devops/dockerfile -t hlhuynh14/devops:$BUILD_NAME ./3_devops
             env:
               BUILD_NAME: $(Build.DefinitionName)
           - script: docker login --username $DOCKER_USER --password $DOCKER_TOKEN
